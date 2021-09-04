@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title></title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <% if (user) {%>
     <h1>WELCOME BACK <%= user.username %></h1>
     <a href="/log-out">LOG OUT</a>
-    <% } else { %>
+    <% messages.forEach(message => { %>
+    <p><%=message.title %></p>
+    <p><%=message.text%></p>
+    <p><%=message.time%></p>
+    <p><%=message.user.username%></p>
+    <% }) %> <% } else { %>
     <h2>Please Log In</h2>
+    <a href="/log-in">LOG IN</a>
     <%}%>
   </body>
 </html>

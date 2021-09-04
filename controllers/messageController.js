@@ -2,7 +2,16 @@ var async = require("async");
 var User = require("../models/user");
 var Message = require("../models/message");
 const { body, validationResult } = require("express-validator");
+exports.messageListGet = (req, res, next) => {
+  Message.find({})
+    .populate("user")
+    .exec((err, messages) => {
+      if (err) return next(err);
 
+      console.log("user", req.user, "messages", messages);
+      res.render("index", { user: req.user, messages: messages });
+    });
+};
 exports.messageAddGet = function (req, res, next) {
   if (req.user) {
     res.render("message-add", { errors: [] });
