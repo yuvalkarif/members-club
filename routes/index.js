@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 var userController = require("../controllers/userController");
+var messageController = require("../controllers/messageController");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -13,5 +14,8 @@ router.post("/sign-up", userController.signUpPost);
 
 router.get("/log-in", userController.logInGet);
 router.post("/log-in", userController.logInPost);
+
+router.get("/message-add", messageController.messageAddGet);
+router.post("/message-add", messageController.messageAddPost);
 
 module.exports = router;

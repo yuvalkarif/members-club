@@ -2,15 +2,15 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var flash = require("connect-flash");
-
+var passUse = require("./passport");
+var User = require("./models/user");
 var cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+
 var logger = require("morgan");
 var mongoose = require("mongoose");
 require("dotenv").config();
-var User = require("./models/user");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -43,24 +43,7 @@ passport.deserializeUser(function (id, done) {
     done(err, user);
   });
 });
-passport.use(
-  new LocalStrategy(function (username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) {
-        return done(err);
-      }
-      if (!user) {
-        return done(null, false, {
-          message: "Incorrect username.",
-        });
-      }
-      if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password." });
-      }
-      return done(null, user);
-    });
-  })
-);
+passport.use(passUse.logInAuth);
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   next();

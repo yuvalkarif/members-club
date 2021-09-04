@@ -5,16 +5,16 @@
     <title></title>
   </head>
   <body>
-    <h1>Sign Up</h1>
+    <h1>Add a message</h1>
     <form action="" method="POST">
       <% if (errors.length>>0) { %> <% errors.forEach(error => { %>
       <p><%=error.msg %></p>
       <% }) %> <% } %>
-      <label for="username">Username</label>
-      <input name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input name="password" type="password" />
-      <button>Sign Up</button>
+      <label for="title">title</label>
+      <input name="title" placeholder="title" type="text" />
+      <label for="text">text</label>
+      <input name="text" type="text" />
+      <button>Add a message</button>
     </form>
   </body>
 </html>
