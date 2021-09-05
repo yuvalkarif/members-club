@@ -19,6 +19,14 @@ exports.messageAddGet = function (req, res, next) {
   }
   res.redirect("/log-in");
 };
+exports.messageDeletePost = (req, res, next) => {
+  Message.findByIdAndDelete(req.body.idToDelete).exec((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
 
 exports.messageAddPost = [
   body("title", "Please fill in your Title")

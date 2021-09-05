@@ -23,5 +23,5 @@ a {
 
 /* CHECKED STYLES */
 [type="radio"]:checked + img {
-  outline: 2px solid #f00;
+  outline: 3px solid black;
 }

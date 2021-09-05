@@ -19,5 +19,6 @@ router.post("/log-in", userController.logInPost);
 
 router.get("/message-add", messageController.messageAddGet);
 router.post("/message-add", messageController.messageAddPost);
+router.post("/message-delete", messageController.messageDeletePost);
 
 module.exports = router;

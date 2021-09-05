@@ -22,6 +22,7 @@ exports.signUpPost = [
     var newUser = new User({
       username: req.body.username,
       password: req.body.password,
+      avatar: req.body.avatar,
     });
     User.findOne({ username: req.body.username }).exec(function (
       err,
