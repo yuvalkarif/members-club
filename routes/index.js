@@ -6,6 +6,10 @@ var messageController = require("../controllers/messageController");
 
 /* GET home page. */
 router.get("/", messageController.messageListGet);
+router.get("/log-out", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 router.get("/sign-up", userController.signUpGet);
 router.post("/sign-up", userController.signUpPost);

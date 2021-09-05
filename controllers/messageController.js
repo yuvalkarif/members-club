@@ -4,6 +4,7 @@ var Message = require("../models/message");
 const { body, validationResult } = require("express-validator");
 exports.messageListGet = (req, res, next) => {
   Message.find({})
+    .sort({ time: "descending" })
     .populate("user")
     .exec((err, messages) => {
       if (err) return next(err);

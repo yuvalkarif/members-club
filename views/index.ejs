@@ -7,15 +7,19 @@
   <body>
     <% if (user) {%>
     <h1>WELCOME BACK <%= user.username %></h1>
+    <a href="/message-add">add message</a>
     <a href="/log-out">LOG OUT</a>
-    <% messages.forEach(message => { %>
-    <p><%=message.title %></p>
-    <p><%=message.text%></p>
-    <p><%=message.time%></p>
-    <p><%=message.user.username%></p>
-    <% }) %> <% } else { %>
-    <h2>Please Log In</h2>
+    <% } else { %>
+    <h2>Please Log In to see full messages and write.</h2>
     <a href="/log-in">LOG IN</a>
+    <%}%> <% messages.forEach(message => { %>
+    <img src="/images/<%=message.user.avatar%>.png" />
+    <p><%=message.title %></p>
+    <% if (user) {%>
+    <p><%=message.user.username%></p>
     <%}%>
+    <p><%=message.text%></p>
+    <p><%=message.datetime%></p>
+    <%})%>
   </body>
 </html>

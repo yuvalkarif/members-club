@@ -8,8 +8,7 @@ var UserSchema = new Schema({
   admin: { type: Boolean, default: false },
   avatar: {
     type: String,
-    default:
-      "https://static.wikia.nocookie.net/strangerthings8338/images/4/48/Mike_Wheeler_S1.png/revision/latest?cb=20171025205131",
+    default: "3",
   },
 });
 
