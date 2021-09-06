@@ -1,0 +1,119 @@
+@use "reset";
+@import "colors";
+@import url("https://api.fontshare.com/css?f[]=ranade@100,101,300,301,400,401,500,501,700,701,1,2&display=swap");
+
+body {
+  background-color: $bgColor;
+  color: $whiteColor;
+  font-family: "Ranade", sans-serif;
+  font-weight: 500;
+}
+.avatar-select {
+  /* HIDE RADIO */
+  [type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* IMAGE STYLES */
+  [type="radio"] + img {
+    cursor: pointer;
+    border-radius: 100%;
+    width: 20vw;
+    max-width: 150px;
+  }
+
+  /* CHECKED STYLES */
+  [type="radio"]:checked + img {
+    outline: 3px solid $mainColor;
+  }
+}
+.title {
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 800;
+  margin-bottom: 0.5ch;
+  color: $mainColor;
+  text-shadow: 0px 3px 10px rgba($color: $shadowColor, $alpha: 0.6);
+}
+.form-container {
+  background-color: $contBgColor;
+  border-radius: 0.75rem;
+  color: $mainColor;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 77.5vw;
+  max-width: 1280px;
+  margin: 0 auto;
+  & > * {
+    margin-block: 0.5rem;
+  }
+  > span {
+    margin: 0 auto;
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 0.5ch;
+  }
+  fieldset {
+    border: none;
+    margin-inline: 0;
+    padding: 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    & > * {
+      margin-inline: 2vw;
+    }
+  }
+  > label {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      margin-left: 0.1em;
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 0.5ch;
+    }
+
+    input {
+      padding: 0.35rem 0.2rem;
+      border-radius: 0.75rem;
+      border: none;
+      background-color: $darkColor;
+      color: $whiteColor;
+    }
+  }
+  .errors {
+    & > * {
+      text-align: center;
+      color: $altMainColor;
+      &::before {
+        content: "⚠";
+        margin-right: 0.5ch;
+        font-size: 1.2em;
+        font-weight: 900;
+      }
+    }
+  }
+}
+
+.btn {
+  margin: 0.5em auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 2px solid $mainColor;
+  background: none;
+  color: $mainColor;
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    background: $mainColor;
+    color: $contBgColor;
+    font-weight: 900;
+  }
+}

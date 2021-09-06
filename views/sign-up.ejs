@@ -3,25 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <title></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <h1>Sign Up</h1>
-    <form action="" method="POST">
-      <% if (errors.length>>0) { %> <% errors.forEach(error => { %>
-      <p><%=error.msg %></p>
-      <% }) %> <% } %>
-      <label for="username">Username</label>
-      <input name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input name="password" type="password" />
-      <% for( let i = 1; i <= 5; i++ ) { %>
-      <label>
-        <input type="radio" name="avatar" value="<%=i%>" />
-        <img src="/images/<%=i%>.png" />
+    <h1 class="title">SIGN UP</h1>
+    <form action="" method="POST" class="form-container">
+      <label for="username">
+        <span>Username</span>
+        <input name="username" type="text" />
       </label>
-      <% } %>
-      <button>Sign Up</button>
+
+      <label for="password">
+        <span>Password</span>
+        <input name="password" type="password" />
+      </label>
+      <span>Avatar</span>
+      <fieldset>
+        <% for( let i = 1; i <= 5; i++ ) { %>
+        <label class="avatar-select">
+          <input type="radio" name="avatar" value="<%=i%>" />
+          <img src="/images/<%=i%>.png" />
+        </label>
+        <% } %>
+      </fieldset>
+      <div class="errors">
+        <% if (errors.length>>0) { %> <% errors.forEach(error => { %>
+        <p><%=error.msg %></p>
+        <% }) %> <% } %>
+      </div>
+      <button class="btn">SUBMIT</button>
     </form>
   </body>
 </html>

@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "debug": "DEBUG=members-club:*",
-    "test": "npm run start & npm run debug"
+    "test": "npm run start & npm run debug & npm run watch-scss",
+    "watch-scss": "sass --watch ./public/stylesheets/scss:./public/stylesheets/css"
   },
   "dependencies": {
     "async": "^3.2.1",
@@ -26,6 +27,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "sass": "^1.38.2",
+    "scss": "^0.2.4",
     "serve-favicon": "^2.5.0"
   }
 }
