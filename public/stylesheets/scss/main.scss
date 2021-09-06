@@ -2,6 +2,24 @@
 @import "colors";
 @import url("https://api.fontshare.com/css?f[]=ranade@100,101,300,301,400,401,500,501,700,701,1,2&display=swap");
 
+@mixin container {
+  width: min(77.5vw, 1180px);
+  margin: 0 auto;
+  background-color: $contBgColor;
+  border-radius: 0.75rem;
+  color: $mainColor;
+  padding: 0.5rem 1rem;
+  box-shadow: 0px 2rem 5rem 1rem rgba($color: $bgColor, $alpha: 0.05);
+  border: 1px solid rgba($color: $mainColor, $alpha: 0.1);
+}
+@mixin subTitle {
+  font-size: 1.5em;
+  font-weight: 600;
+  text-shadow: 0px 3px 10px rgba($color: $shadowColor, $alpha: 0.6);
+  a {
+    color: $altMainColor;
+  }
+}
 body {
   background-color: $bgColor;
   color: $whiteColor;
@@ -22,7 +40,7 @@ body {
     cursor: pointer;
     border-radius: 100%;
     width: 20vw;
-    max-width: 150px;
+    max-width: 136px;
   }
 
   /* CHECKED STYLES */
@@ -39,23 +57,21 @@ body {
   text-shadow: 0px 3px 10px rgba($color: $shadowColor, $alpha: 0.6);
 }
 .form-container {
-  background-color: $contBgColor;
-  border-radius: 0.75rem;
-  color: $mainColor;
-  padding: 0.5rem 1rem;
   display: flex;
   flex-direction: column;
-  width: 77.5vw;
-  max-width: 1280px;
+
+  @include container;
   margin: 0 auto;
+  align-items: center;
   & > * {
     margin-block: 0.5rem;
+    width: 95%;
   }
   > span {
+    @include subTitle;
     margin: 0 auto;
-    font-size: 2em;
-    font-weight: 600;
     margin-bottom: 0.5ch;
+    text-align: center;
   }
   fieldset {
     border: none;
@@ -78,6 +94,7 @@ body {
       font-size: 1.5em;
       font-weight: 600;
       margin-bottom: 0.5ch;
+      @include subTitle;
     }
 
     input {
@@ -111,9 +128,81 @@ body {
   color: $mainColor;
   font-weight: 600;
   cursor: pointer;
+  max-width: 10rem;
   &:hover {
     background: $mainColor;
     color: $contBgColor;
     font-weight: 900;
   }
+}
+
+.message-container {
+  @include container;
+  display: flex;
+  gap: min(5vw, 2rem);
+  padding: 2rem;
+  margin-bottom: 3em;
+  margin-top: 3em;
+
+  img {
+    border-radius: 100%;
+    box-shadow: 0px 0.5rem 5rem 1rem rgba($color: $shadowColor, $alpha: 0.35);
+    aspect-ratio: 1/1;
+    max-height: 200px;
+    max-width: 200px;
+    align-self: center;
+    width: 30vw;
+  }
+  h2 {
+    @include subTitle;
+    text-transform: UPPERCASE;
+    text-decoration: underline;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid $mainColor;
+    padding-left: min(5vw, 2rem);
+    span {
+      display: flex;
+      flex-direction: column;
+      & > * {
+        margin-block: 0;
+        margin-bottom: 0.5rem;
+      }
+      & > h3 {
+        &::before {
+          content: "BY_";
+        }
+      }
+    }
+    p {
+      font-weight: 600;
+    }
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $contBgColor;
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: $mainColor;
+    padding: 0.1rem 1rem;
+    border-block: 2px solid $mainColor;
+  }
+}
+.small-title {
+  @include subTitle;
+  color: $mainColor;
+  margin: 0 auto;
+  padding: 1ch;
+  text-align: center;
+  background-color: $contBgColor;
 }

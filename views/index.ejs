@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
+  <%- include('./partials/head'); -%>
   <body>
-    <% if (user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/message-add">add message</a>
-    <a href="/log-out">LOG OUT</a>
-    <% } else { %>
-    <h2>Please Log In to see full messages and write.</h2>
-    <a href="/log-in">LOG IN</a>
-    <a href="/sign-up">SIGN UP</a>
-    <br />
-    <br />
-    <%}%> <% messages.forEach(message => { %>
-    <form action="message-delete" method="post">
-      <button
-        class="submit"
-        type="submit"
-        name="idToDelete"
-        value="<%=message.id %>"
-      >
-        X
-      </button>
-    </form>
-    <img src="/images/<%=message.user.avatar%>.png" />
-    <p><%=message.title %></p>
-    <% if (user) {%>
-    <p><%=message.user.username%></p>
-    <%}%>
-    <p><%=message.text%></p>
-    <p><%=message.datetime%></p>
-    <br />
-
+    <%- include('./partials/header'); -%> <% messages.forEach(message => { %>
+    <section class="message-container">
+      <img src="/images/<%=message.user.avatar%>.png" />
+      <div>
+        <span>
+          <h2><%=message.title %></h2>
+          <% if (user) {%>
+          <h3><%=message.user.username%></h3>
+          <%}%>
+        </span>
+        <p><%=message.text%></p>
+        <p><%=message.datetime%></p>
+      </div>
+      <!-- <form action="message-delete" method="post">
+        <button
+          class="btn"
+          class="submit"
+          type="submit"
+          name="idToDelete"
+          value="<%=message.id %>"
+        >
+          X
+        </button>
+      </form> -->
+    </section>
     <%})%>
   </body>
 </html>

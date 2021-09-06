@@ -9,13 +9,16 @@ exports.messageListGet = (req, res, next) => {
     .exec((err, messages) => {
       if (err) return next(err);
 
-      console.log("user", req.user, "messages", messages);
-      res.render("index", { user: req.user, messages: messages });
+      res.render("index", {
+        title: "MESSAGES",
+        user: req.user,
+        messages: messages,
+      });
     });
 };
 exports.messageAddGet = function (req, res, next) {
   if (req.user) {
-    res.render("message-add", { errors: [] });
+    res.render("message-add", { title: "MESSAGE_ADD", errors: [] });
   }
   res.redirect("/log-in");
 };
@@ -41,7 +44,7 @@ exports.messageAddPost = [
     var errors = validationResult(req);
     errors = errors.array();
     if (errors.length >> 0) {
-      res.render("message-add", { errors: errors });
+      res.render("message-add", { title: "MESSAGE_ADD", errors: errors });
     } else {
       var newMessage = new Message({
         title: req.body.title,

@@ -5,7 +5,7 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
 exports.signUpGet = function (req, res, next) {
-  res.render("sign-up", { title: "Sign Up", errors: [] });
+  res.render("sign-up", { title: "SIGN_UP", errors: [] });
 };
 exports.signUpPost = [
   body("username", "Please fill in your Username")
@@ -28,7 +28,6 @@ exports.signUpPost = [
       err,
       existingUser
     ) {
-      console.log("existinguser", existingUser);
       if (err) {
         return next(err);
       }
@@ -37,7 +36,7 @@ exports.signUpPost = [
       }
       console.log("errors", errors);
       if (errors.length >> 0) {
-        res.render("sign-up", { title: "Sign Up", errors: errors });
+        res.render("sign-up", { title: "SIGN_UP", errors: errors });
       } else {
         bcrypt.hash(newUser.password, 10, (err, hashedPassword) => {
           if (err) return next(err);
@@ -56,7 +55,7 @@ exports.signUpPost = [
 
 exports.logInGet = function (req, res, next) {
   var error = req.flash("error");
-  res.render("log-in", { title: "Log In", message: error });
+  res.render("log-in", { title: "LOG_IN", message: error });
 };
 
 exports.logInPost = passport.authenticate("local", {
