@@ -7,25 +7,27 @@
       <img src="/images/<%=message.user.avatar%>.png" />
       <div>
         <span>
-          <h2><%=message.title %></h2>
+          <h2><%-message.title %></h2>
           <% if (user) {%>
-          <h3><%=message.user.username%></h3>
+          <h3 class="name"><%=message.user.username%></h3>
           <%}%>
         </span>
-        <p><%=message.text%></p>
+        <p><%-message.text%></p>
         <p><%=message.datetime%></p>
       </div>
-      <!-- <form action="message-delete" method="post">
+      <% if (locals.currentUser) { %> <% if (locals.currentUser.admin==true) {
+      %>
+      <form action="message-delete" method="post" class="delete-btn">
         <button
           class="btn"
-          class="submit"
           type="submit"
           name="idToDelete"
           value="<%=message.id %>"
         >
           X
         </button>
-      </form> -->
+      </form>
+      <% } %> <% } %>
     </section>
     <%})%>
   </body>

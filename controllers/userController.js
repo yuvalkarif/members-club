@@ -67,10 +67,12 @@ exports.logInPost = passport.authenticate("local", {
 });
 
 exports.accessGet = function (req, res, next) {
+  var error = req.flash("error");
+  console.log("error", error);
   if (req.user) {
     res.render("access", {
       title: "ACCESS",
-      errors: [],
+      errors: [{ msg: error.toString() }],
     });
   } else {
     req.flash("error", "LOG IN TO GAIN ACCESS");
@@ -80,54 +82,38 @@ exports.accessGet = function (req, res, next) {
 exports.accessPost = [
   body("code", "ENTER A CODE").trim().isLength({ min: 1 }).escape(),
   (req, res, next) => {
-    console.log("entering post");
     var errors = validationResult(req);
     errors = errors.array();
     Code.findOne({ password: req.body.code }).exec((err, foundCode) => {
       if (err) {
         return next(err);
       }
+
       if (foundCode) {
         if (foundCode.type == "admin") {
-          User.findOneAndUpdate(
-            { id: req.user.id },
-            { admin: true, member: true }
-          ).exec((err) => {
+          User.findByIdAndUpdate(req.user._id, {
+            admin: true,
+            member: true,
+          }).exec((err) => {
             if (err) return next(err);
             res.redirect("/");
           });
         } else {
-          User.findOneAndUpdate({ id: req.user.id }, { member: true }).exec(
-            (err) => {
+          User.findByIdAndUpdate(req.user._id, { member: true }).exec(
+            (err, updatedUser) => {
               if (err) return next(err);
+
               res.redirect("/");
             }
           );
         }
-      }
-      if (!errors.length >> 0) {
-        errors.push({ msg: "TRY ANOTHER CODE" });
-      }
+      } else {
+        if (errors.length << 0) {
+          errors.push({ msg: "TRY ANOTHER CODE" });
+        }
 
-      res.render("access", { title: "ACCESS", errors: errors });
+        res.render("access", { title: "ACCESS", errors: errors });
+      }
     });
   },
 ];
-
-// if (foundCode) {
-//   User.findOneAndUpdate(
-//     { id: req.user.id },
-//     {
-//       $cond: [
-//         foundCode.type == "admin",
-//         { admin: true, member: true },
-//         { member: true },
-//       ],
-//     }
-//   ).exec((err, updatedUser) => {
-//     console.log("UPDATING USER", updatedUser);
-//     if (err) {
-//       next(err);
-//     }
-//     res.redirect("/");
-//   });

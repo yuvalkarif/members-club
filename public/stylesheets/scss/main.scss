@@ -10,7 +10,7 @@
   color: $mainColor;
   padding: 0.5rem 1rem;
   box-shadow: 0px 2rem 5rem 1rem rgba($color: $bgColor, $alpha: 0.05);
-  border: 1px solid rgba($color: $mainColor, $alpha: 0.1);
+  border: 1px solid rgba($color: $mainColor, $alpha: 1);
 }
 @mixin subTitle {
   font-size: 1.5em;
@@ -90,10 +90,11 @@ body {
     flex-direction: column;
 
     span {
-      margin-left: 0.1em;
+      margin-left: 9%;
       font-size: 1.5em;
       font-weight: 600;
       margin-bottom: 0.5ch;
+
       @include subTitle;
     }
 
@@ -103,7 +104,8 @@ body {
       border-radius: 0.75rem;
       border: none;
       background-color: $darkColor;
-
+      width: 80%;
+      margin: 0 auto;
       color: $altMainColor;
       font-size: 1.25em;
       font-family: "Courier New", Courier, monospace;
@@ -128,7 +130,7 @@ body {
 }
 
 .btn {
-  margin: 0.5em auto;
+  margin: 0 auto;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   border: 2px solid $mainColor;
@@ -142,19 +144,25 @@ body {
     color: $contBgColor;
     font-weight: 900;
   }
+  @media screen and (max-width: 768px) {
+    font-size: 0.8em;
+    padding: 0.25rem 0.45rem;
+  }
 }
 
 .message-container {
   @include container;
-  display: flex;
-  gap: min(5vw, 2rem);
+  display: grid;
+  gap: min(5vw, 1rem);
+  grid-template-columns: 1fr 5fr 1fr;
   padding: 2rem;
   margin-bottom: 3em;
   margin-top: 3em;
+  box-shadow: 0px 2em 2rem 0.2rem rgba($color: $shadowColor, $alpha: 0.05);
 
   img {
     border-radius: 100%;
-    box-shadow: 0px 0.5rem 5rem 1rem rgba($color: $shadowColor, $alpha: 0.35);
+    box-shadow: 0px 0.5rem 2rem 0.2rem rgba($color: $shadowColor, $alpha: 0.35);
     aspect-ratio: 1/1;
     max-height: 200px;
     max-width: 200px;
@@ -165,6 +173,12 @@ body {
     @include subTitle;
     text-transform: UPPERCASE;
     text-decoration: underline;
+    @media screen and (min-width: 768px) {
+      font-size: 2.2em;
+      font-weight: 900;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 1.5px $mainColor;
+    }
   }
   div {
     display: flex;
@@ -191,19 +205,30 @@ body {
       margin-bottom: 0;
     }
   }
+  @media screen and (max-width: 768px) {
+    h2 {
+      font-size: 1em;
+    }
+    h3 {
+      font-size: 0.75em;
+    }
+    p {
+      font-size: 0.6em;
+    }
+  }
 }
 .navbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $contBgColor;
+  border-bottom: 1px solid $mainColor;
+  padding-bottom: 0.5em;
 
   a {
     display: block;
     text-decoration: none;
     color: $mainColor;
-    padding: 0.1rem 1rem;
-    border-block: 2px solid $mainColor;
+    padding: 0.2em 0.5em;
   }
 }
 .small-title {
@@ -212,14 +237,18 @@ body {
   margin: 0 auto;
   padding: 1ch;
   text-align: center;
-  background-color: $contBgColor;
+  font-size: 0.85em;
 }
 
+.name {
+  color: $altMainColor;
+  font-size: 1.25em;
+  font-family: "Courier New", Courier, monospace;
+}
 .code {
   span {
     @include subTitle;
     color: $mainColor;
-    text-align: center;
   }
   input {
     color: $altMainColor;
@@ -231,4 +260,21 @@ body {
 
     padding: 1ch !important;
   }
+}
+
+.delete-btn {
+  justify-self: flex-end;
+}
+
+.logo {
+  margin: 0 auto;
+  display: block;
+  aspect-ratio: 488/213;
+  width: 50vw;
+  max-width: 488px;
+}
+
+.header {
+  background-color: $contBgColor;
+  box-shadow: 0px 0.5rem 2rem 0.2rem rgba($color: $shadowColor, $alpha: 0.15);
 }

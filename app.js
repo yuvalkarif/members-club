@@ -7,6 +7,7 @@ var User = require("./models/user");
 var cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
+var helmet = require("helmet");
 
 var logger = require("morgan");
 var mongoose = require("mongoose");
@@ -14,8 +15,10 @@ require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var compression = require("compression");
 
 var app = express();
+app.use(helmet());
 
 //MongoDB
 var mongoDB = process.env.MONGODB_URI || process.env.DB_KEY;
@@ -24,6 +27,7 @@ var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // view engine setup
+app.use(compression());
 app.use(express.static("public"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

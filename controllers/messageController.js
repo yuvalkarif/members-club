@@ -18,9 +18,15 @@ exports.messageListGet = (req, res, next) => {
 };
 exports.messageAddGet = function (req, res, next) {
   if (req.user) {
-    res.render("message-add", { title: "MESSAGE_ADD", errors: [] });
+    if (req.user.member) {
+      res.render("message-add", { title: "MESSAGE_ADD", errors: [] });
+    }
+    req.flash("error", "BECOME A MEMBER TO POST A MESSAGE");
+    res.redirect("/access");
+  } else {
+    req.flash("error", "LOG IN TO POST A MESSAGE");
+    res.redirect("/log-in");
   }
-  res.redirect("/log-in");
 };
 exports.messageDeletePost = (req, res, next) => {
   Message.findByIdAndDelete(req.body.idToDelete).exec((err) => {

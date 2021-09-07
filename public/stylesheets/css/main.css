@@ -340,7 +340,7 @@ template {
 }
 
 body {
-  background-color: #16161a;
+  background-color: #18181b;
   color: #ffffff;
   font-family: "Ranade", sans-serif;
   font-weight: 500;
@@ -381,12 +381,12 @@ body {
   flex-direction: column;
   width: min(70vw, 1180px);
   margin: 0 auto;
-  background-color: rgba(12, 12, 13, 0.75);
+  background-color: rgba(23, 23, 23, 0.75);
   border-radius: 0.75rem;
   color: #e82a2a;
   padding: 0.5rem 1rem;
-  box-shadow: 0px 2rem 5rem 1rem rgba(22, 22, 26, 0.05);
-  border: 1px solid rgba(232, 42, 42, 0.1);
+  box-shadow: 0px 2rem 5rem 1rem rgba(24, 24, 27, 0.05);
+  border: 1px solid #e82a2a;
   margin: 0 auto;
   align-items: center;
 }
@@ -422,7 +422,7 @@ body {
   flex-direction: column;
 }
 .form-container > label span {
-  margin-left: 0.1em;
+  margin-left: 9%;
   font-size: 1.5em;
   font-weight: 600;
   margin-bottom: 0.5ch;
@@ -439,6 +439,8 @@ body {
   border-radius: 0.75rem;
   border: none;
   background-color: #19181f;
+  width: 80%;
+  margin: 0 auto;
   color: #e8ce2a;
   font-size: 1.25em;
   font-family: "Courier New", Courier, monospace;
@@ -459,7 +461,7 @@ body {
 }
 
 .btn {
-  margin: 0.5em auto;
+  margin: 0 auto;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   border: 2px solid #e82a2a;
@@ -471,28 +473,36 @@ body {
 }
 .btn:hover {
   background: #e82a2a;
-  color: rgba(12, 12, 13, 0.75);
+  color: rgba(23, 23, 23, 0.75);
   font-weight: 900;
+}
+@media screen and (max-width: 768px) {
+  .btn {
+    font-size: 0.8em;
+    padding: 0.25rem 0.45rem;
+  }
 }
 
 .message-container {
   width: min(70vw, 1180px);
   margin: 0 auto;
-  background-color: rgba(12, 12, 13, 0.75);
+  background-color: rgba(23, 23, 23, 0.75);
   border-radius: 0.75rem;
   color: #e82a2a;
   padding: 0.5rem 1rem;
-  box-shadow: 0px 2rem 5rem 1rem rgba(22, 22, 26, 0.05);
-  border: 1px solid rgba(232, 42, 42, 0.1);
-  display: flex;
-  gap: min(5vw, 2rem);
+  box-shadow: 0px 2rem 5rem 1rem rgba(24, 24, 27, 0.05);
+  border: 1px solid #e82a2a;
+  display: grid;
+  gap: min(5vw, 1rem);
+  grid-template-columns: 1fr 5fr 1fr;
   padding: 2rem;
   margin-bottom: 3em;
   margin-top: 3em;
+  box-shadow: 0px 2em 2rem 0.2rem rgba(135, 0, 0, 0.05);
 }
 .message-container img {
   border-radius: 100%;
-  box-shadow: 0px 0.5rem 5rem 1rem rgba(135, 0, 0, 0.35);
+  box-shadow: 0px 0.5rem 2rem 0.2rem rgba(135, 0, 0, 0.35);
   aspect-ratio: 1/1;
   max-height: 200px;
   max-width: 200px;
@@ -508,6 +518,14 @@ body {
 }
 .message-container h2 a {
   color: #e8ce2a;
+}
+@media screen and (min-width: 768px) {
+  .message-container h2 {
+    font-size: 2.2em;
+    font-weight: 900;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.5px #e82a2a;
+  }
 }
 .message-container div {
   display: flex;
@@ -532,19 +550,30 @@ body {
 .message-container div :last-child {
   margin-bottom: 0;
 }
+@media screen and (max-width: 768px) {
+  .message-container h2 {
+    font-size: 1em;
+  }
+  .message-container h3 {
+    font-size: 0.75em;
+  }
+  .message-container p {
+    font-size: 0.6em;
+  }
+}
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(12, 12, 13, 0.75);
+  border-bottom: 1px solid #e82a2a;
+  padding-bottom: 0.5em;
 }
 .navbar a {
   display: block;
   text-decoration: none;
   color: #e82a2a;
-  padding: 0.1rem 1rem;
-  border-block: 2px solid #e82a2a;
+  padding: 0.2em 0.5em;
 }
 
 .small-title {
@@ -555,10 +584,16 @@ body {
   margin: 0 auto;
   padding: 1ch;
   text-align: center;
-  background-color: rgba(12, 12, 13, 0.75);
+  font-size: 0.85em;
 }
 .small-title a {
   color: #e8ce2a;
+}
+
+.name {
+  color: #e8ce2a;
+  font-size: 1.25em;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .code span {
@@ -566,7 +601,6 @@ body {
   font-weight: 600;
   text-shadow: 0px 3px 10px rgba(135, 0, 0, 0.6);
   color: #e82a2a;
-  text-align: center;
 }
 .code span a {
   color: #e8ce2a;
@@ -579,6 +613,23 @@ body {
   margin: 0 auto;
   text-align: center;
   padding: 1ch !important;
+}
+
+.delete-btn {
+  justify-self: flex-end;
+}
+
+.logo {
+  margin: 0 auto;
+  display: block;
+  aspect-ratio: 488/213;
+  width: 50vw;
+  max-width: 488px;
+}
+
+.header {
+  background-color: rgba(23, 23, 23, 0.75);
+  box-shadow: 0px 0.5rem 2rem 0.2rem rgba(135, 0, 0, 0.15);
 }
 
 /*# sourceMappingURL=main.css.map */
