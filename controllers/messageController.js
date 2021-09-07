@@ -17,12 +17,14 @@ exports.messageListGet = (req, res, next) => {
     });
 };
 exports.messageAddGet = function (req, res, next) {
+  req.user;
   if (req.user) {
-    if (req.user.member) {
+    if (req.user.member == true) {
       res.render("message-add", { title: "MESSAGE_ADD", errors: [] });
+    } else {
+      req.flash("error", "BECOME A MEMBER TO POST A MESSAGE");
+      res.redirect("/access");
     }
-    req.flash("error", "BECOME A MEMBER TO POST A MESSAGE");
-    res.redirect("/access");
   } else {
     req.flash("error", "LOG IN TO POST A MESSAGE");
     res.redirect("/log-in");
