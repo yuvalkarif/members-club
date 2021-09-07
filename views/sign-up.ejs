@@ -2,8 +2,14 @@
 <html lang="en">
   <%- include('./partials/head'); -%>
   <body>
+    <%- include('./partials/header'); -%>
     <h1 class="title">SIGN UP</h1>
     <form action="" method="POST" class="form-container">
+      <div class="errors">
+        <% if (errors.length>>0) { %> <% errors.forEach(error => { %>
+        <p><%=error.msg %></p>
+        <% }) %> <% } %>
+      </div>
       <label for="username">
         <span>Username</span>
         <input name="username" type="text" />
@@ -22,11 +28,7 @@
         </label>
         <% } %>
       </fieldset>
-      <div class="errors">
-        <% if (errors.length>>0) { %> <% errors.forEach(error => { %>
-        <p><%=error.msg %></p>
-        <% }) %> <% } %>
-      </div>
+
       <button class="btn">SUBMIT</button>
     </form>
   </body>

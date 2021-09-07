@@ -3,7 +3,7 @@
 @import url("https://api.fontshare.com/css?f[]=ranade@100,101,300,301,400,401,500,501,700,701,1,2&display=swap");
 
 @mixin container {
-  width: min(77.5vw, 1180px);
+  width: min(70vw, 1180px);
   margin: 0 auto;
   background-color: $contBgColor;
   border-radius: 0.75rem;
@@ -97,12 +97,20 @@ body {
       @include subTitle;
     }
 
-    input {
+    input,
+    textarea {
       padding: 0.35rem 0.2rem;
       border-radius: 0.75rem;
       border: none;
       background-color: $darkColor;
-      color: $whiteColor;
+
+      color: $altMainColor;
+      font-size: 1.25em;
+      font-family: "Courier New", Courier, monospace;
+      padding: 1ch;
+    }
+    textarea {
+      height: 20vh;
     }
   }
   .errors {
@@ -151,7 +159,7 @@ body {
     max-height: 200px;
     max-width: 200px;
     align-self: center;
-    width: 30vw;
+    width: 25vw;
   }
   h2 {
     @include subTitle;
@@ -205,4 +213,22 @@ body {
   padding: 1ch;
   text-align: center;
   background-color: $contBgColor;
+}
+
+.code {
+  span {
+    @include subTitle;
+    color: $mainColor;
+    text-align: center;
+  }
+  input {
+    color: $altMainColor;
+    font-size: 1.25em;
+    font-family: "Courier New", Courier, monospace;
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+
+    padding: 1ch !important;
+  }
 }

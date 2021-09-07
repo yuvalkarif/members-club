@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title></title>
-  </head>
+  <%- include('./partials/head'); -%>
   <body>
-    <h1>Add a message</h1>
-    <form action="" method="POST">
+    <%- include('./partials/header'); -%>
+    <h1 class="title">Add a message</h1>
+    <form action="" method="POST" class="form-container">
       <% if (errors.length>>0) { %> <% errors.forEach(error => { %>
       <p><%=error.msg %></p>
       <% }) %> <% } %>
-      <label for="title">title</label>
-      <input name="title" placeholder="title" type="text" />
-      <label for="text">text</label>
-      <input name="text" type="text" />
-      <button>Add a message</button>
+      <label for="title">
+        <span>Title</span>
+        <input name="title" placeholder="title" type="text" />
+      </label>
+      <label for="text">
+        <span>Body</span>
+        <textarea name="text" type="text"></textarea>
+      </label>
+
+      <button class="btn">Add a message</button>
     </form>
   </body>
 </html>

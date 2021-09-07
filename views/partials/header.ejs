@@ -1,13 +1,16 @@
 <header class="header">
-  <% if (user) {%>
-  <h1 class="small-title">WELCOME_STRANGER_<%= user.username %></h1>
+  <% if (locals.currentUser) {%>
+  <h1 class="small-title">
+    WELCOME_STRANGER_<%= locals.currentUser.username %>
+  </h1>
   <div class="navbar">
     <a href="/message-add">ADD_MESSAGE</a>
+    <a href="/access">ACCESS</a>
     <a href="/log-out">LOG_OUT</a>
   </div>
 
   <% } else { %>
-  <h2 class="small-title">Please Log In to see full messages and write.</h2>
+  <h2 class="small-title">LOG IN TO SEE THE FULL MESSAGES.</h2>
   <div class="navbar">
     <a href="/log-in">LOG IN</a>
     <a href="/sign-up">SIGN UP</a>

@@ -21,4 +21,7 @@ router.get("/message-add", messageController.messageAddGet);
 router.post("/message-add", messageController.messageAddPost);
 router.post("/message-delete", messageController.messageDeletePost);
 
+router.get("/access", userController.accessGet);
+router.post("/access", userController.accessPost);
+
 module.exports = router;

@@ -16,12 +16,15 @@ $brightWhite: #e7e7e7;
 $white: #ffffff;
 //Greys
 $grey90: #0c0c0d;
-$grey80: #1a1a1d;
-$grey70: #38383d;
+$grey80: #16161a;
+$grey70: #3d3b38;
 
 $bgColor: $grey80;
 $darkColor: $darkestGrey;
-$contBgColor: $grey90;
+$contBgColor: rgba(
+  $color: $grey90,
+  $alpha: 0.75,
+);
 $shadowColor: $darkRed;
 $mainColor: $brightRed;
 $altMainColor: $brightOpposite;

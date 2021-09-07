@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head'); -%>
+  <body>
+    <%- include('./partials/header'); -%>
+    <h1 class="title">ACCESS</h1>
+    <form action="" method="POST" class="form-container">
+      <div class="errors">
+        <% if (errors.length>>0) { %> <% errors.forEach(error => { %>
+        <p><%=error.msg %></p>
+        <% }) %> <% } %>
+      </div>
+      <label for="code" class="code">
+        <span>ENTER YOUR CODE TO GO ACHIEVE GREATNESS</span>
+        <input name="code" type="text" />
+      </label>
+
+      <button class="btn">Add a message</button>
+    </form>
+  </body>
+</html>

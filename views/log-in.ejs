@@ -2,11 +2,15 @@
 <html lang="en">
   <%- include('./partials/head'); -%>
   <body>
+    <%- include('./partials/header'); -%>
     <h1 class="title">Log In</h1>
+
     <form action="" method="POST" class="form-container">
-      <% if (message.length>>0) { %>
-      <p><%=message[0] %></p>
-      <% } %>
+      <div class="errors">
+        <% if (message.length>>0) { %>
+        <p><%=message[0] %></p>
+        <% } %>
+      </div>
       <label for="username">
         <span>Username</span>
         <input name="username" type="text" />
